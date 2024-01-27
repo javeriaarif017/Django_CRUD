@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block Content %}
+    <body>
+    
+      <br>
+      <table class="table">
+        <thead class="table table-success table-striped">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact</th>
+          </tr>
+        <tbody>
+          <tr>
+            {% for emps in emp %}
+            <td>{{emps.eid}}</td>
+            <td>{{emps.name}}</td>
+            <td>{{emps.email}}</td>
+            <td>{{emps.econtact}}</td> 
+            <td>
+              <a href="/edit/{{ emp.eid }}" type="button" class="btn btn-info">Edit</a>
+              <a href="/delete/{{ emp.eid }}" type="button" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        </thead>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href={% url 'getdata' %} type="button" class="btn btn-info">Add Data</a>
+{% endblock%}
+
