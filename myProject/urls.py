@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('getdata', views.GetData, name='getdata'),
-    path('edit/<int:id>', views.DataEdit, name='edit'),
-    path('update/<int:id>', views.update, name='update'),
+    path('edit/<int:pk>', views.DataEdit, name='edit'),
+    path('update/<int:pk>', views.update, name='update'),
+    path('delete/<int:pk>', views.delete, name='delete'),
+
 ]

@@ -1,29 +1,27 @@
 {% extends 'base.html'%}
 {% block Content %}
-    <body>
-    
-      <br>
-      <table class="table">
-        <thead class="table table-success table-striped">
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact</th>
-          </tr>
-        <tbody>
-          <tr>
-            {% for emps in emp %}
-            <td>{{emps.eid}}</td>
-            <td>{{emps.name}}</td>
-            <td>{{emps.email}}</td>
-            <td>{{emps.econtact}}</td> 
-            <td>
-              <a href="/edit/{{ emp.eid }}" type="button" class="btn btn-info">Edit</a>
-              <a href="/delete/{{ emp.eid }}" type="button" class="btn btn-danger">Delete</a>
-            </td>
-          </tr>
-        </thead>
+<table class="table table-striped">
+  <thead class="table-success">
+      <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for emps in emp %}
+      <tr>
+          <td>{{ emps.eid }}</td>
+          <td>{{ emps.name }}</td>
+          <td>{{ emps.email }}</td>
+          <td>{{ emps.econtact }}</td> 
+          <td>
+              <a href="{% url 'update' emps.id %}" class="btn btn-info">Edit</a>
+              <a href="{% url 'delete' emps.id %}" class="btn btn-danger">Delete</a>
+          </td>
+      </tr>
           {% endfor %}
         </tbody>
       </table>
