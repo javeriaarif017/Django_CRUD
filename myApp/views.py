@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect
 from .models import Employee
 from .forms import EmployeeForm
 
@@ -32,16 +32,11 @@ def DataEdit(request, id):
 
 
 
-def update(request, pk):
-    emp = Employee.objects.get(id=pk)
+def update(request, id):
+    emp = Employee.objects.get(eid=id)
     form = EmployeeForm(request.POST, instance = emp)  
     if form.is_valid():  
         form.save()  
-        return redirect("/")  
+        return redirect("/index")  
     return render(request, 'edit.html', {'emp': emp})
-
-def delete(request, pk):  
-    employee = Employee.objects.get(id=pk)  
-    employee.delete()  
-    return redirect("/")  
 
